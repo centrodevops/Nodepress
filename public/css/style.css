@@ -1,0 +1,7 @@
+body {
+    display: flex;
+  }
+
+  #container {
+    display:flex; flex-direction: row;
+  }
