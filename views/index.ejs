@@ -1,0 +1,23 @@
+<%- include('./partials/navbar.ejs'); %>
+<%- include('./partials/header.ejs'); %>
+<body>
+    <div class="container">
+        <div class="card">
+            <% article.forEach(category => { %>
+                <tr>
+                    <th><%= category.id %></th>
+                    <th><%= category.title %></th>
+                    <th><%= category.slug%></th>
+                    <th>
+                        <a href="/categories/edit/<%=category.id%>" class="btn btn-warning">Editar</a>
+                        <form  method="POST" action="/categories/delete" style='display:inline' >
+                            <input name="id" type="hidden" value="<%= category.id %>"/>
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </th>
+                </tr> 
+            <% }) %>
+        </div>
+    </div>
+</body>
+<%- include('./partials/footer.ejs'); %>

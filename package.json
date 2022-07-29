@@ -1,0 +1,20 @@
+{
+  "name": "projeto-wordpress-clone",
+  "version": "1.0.0",
+  "description": "Project based on Wordpress clone. From NodeJS Udemy Course ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^1.3.3",
+    "sequelize": "^6.21.1",
+    "slugify": "^1.6.5"
+  }
+}

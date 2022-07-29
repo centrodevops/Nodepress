@@ -1,0 +1,25 @@
+<%- include('./../../partials/navbar.ejs'); %>
+<%- include('./../../partials/header.ejs'); %>
+<body>
+    <div class="conteiner" >
+        <h1>Artigos:</h1><br/>
+        <hr>
+        <a href="/articles/new"><button class="btn btn-success">Criar Artigo</button></a>
+        <% article.forEach(articles=>{ %>
+            <hr>
+            <h2><%= articles.title%></h2>
+            <p><%- articles.body%></p>
+            <h4>Categoria: </h4>
+            <form method="POST" action="/articles/delete" style='display:inline' >
+                <input name="id" type="hidden" value="<%= articles.id %>"/>
+                <button class="btn btn-danger">Deletar</button>
+            </form>
+            <a href="/<%= articles.slug %>">
+            <br/>
+            <button class="btn btn-success">Ler Artigo</button></a>
+                
+        <% }); %>
+    </div>
+</body>
+
+<%- include('./../../partials/footer.ejs'); %>

@@ -1,0 +1,75 @@
+<%- include('./partials/navbar.ejs'); %>
+<%- include('./partials/header.ejs'); %>
+<body>
+    <div class="container">
+        <div class="card">
+            <% result.article.forEach(category => { %>
+                <tr>
+                    <th><%= category.id %></th>
+                    <th><%= category.title %></th>
+                    <th><%= category.slug%></th>
+                    <th>
+                        <a href="/categories/edit/<%=category.id%>" class="btn btn-warning">Editar</a>
+                        <form  method="POST" action="/categories/delete" style='display:inline' >
+                            <input name="id" type="hidden" value="<%= category.id %>"/>
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </th>
+                </tr> 
+            <% }) %>
+        </div>
+
+        <nav aria-label="...">
+            <ul class="pagination">
+                <% if (result.page == 1){ %>
+
+                    <li class="page-item active">
+                        <span class="page-link">
+                            <%=result.page%>
+                        <span class="sr-only">(current)</span>
+                        </span>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="<%=result.next%>"><%=result.next %></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="<%=result.next%>">Próximo</a>
+                    </li>
+                    <%} else if (result.page == result.total)  { %>
+                        <li class="page-item">
+                            <a class="page-link" href="<%=result.prev%>">Anterior</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="<%=result.prev%>"><span class="page-link"><%=result.prev%></span></a>
+                        </li>
+                        <li class="page-item active">
+                            <span class="page-link">
+                                <%=result.page%>
+                            <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                    <%} else { %>
+                        <li class="page-item">
+                            <a class="page-link" href="<%=result.prev%>">Anterior</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="<%=result.prev%>"><span class="page-link"><%=result.prev%></span></a>
+                        </li>
+                        <li class="page-item active">
+                            <span class="page-link">
+                                <%=result.page%>
+                            <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                        <li class="page-item">
+                            <a href="<%=result.next%>"><span class="page-link"><%=result.next%></span></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="<%=result.next%>">Próximo</a>
+                        </li>
+                    <%} %>
+            </ul>
+          </nav>
+    </div>
+</body>
+<%- include('./partials/footer.ejs'); %>
