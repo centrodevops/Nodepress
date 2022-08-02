@@ -2,17 +2,42 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const connection = require('./Database/database'); // importando arquivo que indica banco
+
+
 const app = express(); //Instanciou o express
+const session = require('express-session'); // importando o express-session cookies e sessoes
+
 // Controllers importados do express
 const  articleController = require("./articles/articlesController");
 const  categoriesController = require("./categories/categoriesController");
-
 const usersController = require("./user/usersController.js");
 
 // Body Parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}));
 
+// Esses cookies são armazenados no servidor
+app.get("/session", (req, res) => {
+    req.session.user =  {
+        name: 'akdfmal',
+        age: 430
+    }
+    res.send(req.session.user);
+}
+);
+app.get("/ler", (req, res) => {
+    var user = req.session.user
+    res.json({user});
+}
+);
 //importing Models
 const Category = require("./categories/Category");
 const Article = require("./articles/Article");

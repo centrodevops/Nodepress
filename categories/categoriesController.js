@@ -49,7 +49,7 @@ router.post("/categories/delete/" , (req,res)=>{
 })
 
 // Rota que renderiza as categorias
-router.get("/admin/categories/", (req,res)=>{
+router.get("/categories/list", (req,res)=>{
     Category.findAll().then(categories=>{
         res.render('./../views/admin/categories/', {categories: categories}); // Aqui eu passo a rota '', {Esse json é enviado ao front-end}
     })
@@ -62,7 +62,7 @@ router.get("/categories/edit/:id",(req,res)=>{
         if (category != undefined){
             res.render("./../views/admin/categories/edit", {category: category}); // ! Json com os arquivos que vc quer mandar pro front-end sempre no render.
         }else{
-            res.redirect("/admin/categories");
+            res.redirect("/categories");
         }
     }).catch(err =>{
         console.log(err);

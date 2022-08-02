@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 // Indica onde estamos nos conectando
-const connection = new Sequelize('wordpress_clone','root','***MY-PASSWORD***',{
+const connection = new Sequelize('wordpress_clone','root','****MY-PASSWORD***',{
     //parametros
     host: 'localhost',
     dialect: 'mysql',
