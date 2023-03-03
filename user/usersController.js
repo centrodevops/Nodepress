@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('./User.js'); 
 
 const adminAuth = require('./../middlewares/adminauth');
+<<<<<<< HEAD
 const authToken = require('./../middlewares/authToken');
 const jwt = require('jsonwebtoken');
 
@@ -10,10 +11,13 @@ const jwt = require('jsonwebtoken');
 
 const jwtSecret = 'famdkfaç318nm7yhsaasdçl'
 
+=======
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
 
 // ! Usando Hashs para criptografar a senha
 const bcrypt = require('bcrypt');
 
+<<<<<<< HEAD
 router.get("/users/list",authToken, (req,res)=>{
     User.findAll().then(users=>{
         res.render('./../views/admin/users/', {users: users}); // Aqui eu passo a rota '', {Esse json é enviado ao front-end}
@@ -25,6 +29,19 @@ router.get("/users/list",authToken, (req,res)=>{
     )
 
 })
+=======
+
+router.get("/users/list", adminAuth ,(req,res)=>{ // Rota para listar todos os usuarios
+    User.findAll().then(users=>{
+        res.render("admin/users/index",{users: users}); // Renderiza o index.ejs e passa um json de usuarios
+    }
+    ).catch(err=>{
+        console.log(err);
+    }
+    )
+}
+)
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
 router.get("/users/create",(req,res)=>{
         res.render("admin/users/create.ejs");
     }
@@ -82,6 +99,7 @@ router.post("/users/auth",(req,res)=>{
         if(user != undefined){
             bcrypt.compare(password,user.password).then(result=>{
                 if(result){
+<<<<<<< HEAD
                     jwt.sign({id:user.id,email:user.email},jwtSecret,{expiresIn:'48h'},(err,token)=>{
                         if(err){
                             res.status(400).json({error: 'Falha interna'});
@@ -95,6 +113,15 @@ router.post("/users/auth",(req,res)=>{
                 }else{
                     res.status(400).json({error: 'Usuário ou senha inválidos'});
                     
+=======
+                    req.session.user = {
+                        id:user.id,
+                        email:user.email
+                    };
+                    res.redirect("/users/list");
+                }else{
+                    res.redirect("/users/login");
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
                 }
             }
             );
@@ -105,6 +132,7 @@ router.post("/users/auth",(req,res)=>{
     );
 });
 
+<<<<<<< HEAD
 router.post("/users/delete",(req,res)=>{
     const id = req.body.id;
     if(id != undefined){
@@ -127,6 +155,8 @@ router.post("/users/delete",(req,res)=>{
 );
 
 
+=======
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
 // ? Logout de Usuário
 router.get("/users/logout",(req,res)=>{
     res.redirect("/users/login");

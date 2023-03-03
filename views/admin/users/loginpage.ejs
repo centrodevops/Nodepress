@@ -1,16 +1,28 @@
 <%- include('../../partials/navbar.ejs'); %>
 <%- include('../../partials/header.ejs'); %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
 <body>
     <div class="container">
         <div class="card">
             <h2>Login</h2>
+<<<<<<< HEAD
             <form>
                 <label>E-mail:</label><br/>
                 <input class="form-control" name="email" type="email" id="email" >
                 <label>Senha:</label><br/>
                 <input class="form-control" name="password" type="password" id="password">
                 <button>Logar</button>
+=======
+            <form method="POST" action="/users/auth">
+                <label>E-mail:</label><br/>
+                <input class="form-control" name="email" type="email" >
+                <label>Senha:</label><br/>
+                <input class="form-control" name="password" type="password" >
+                <button class="btn btn-success">Logar</button>
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
             </form>
         </div>
     </div>

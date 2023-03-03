@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const connection = require('./Database/database'); // importando arquivo que indica banco
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
 const app = express(); //Instanciou o express
 const session = require('express-session'); // importando o express-session cookies e sessoes
 
@@ -35,7 +38,12 @@ app.get("/session", (req, res) => {
 }
 );
 app.get("/ler", (req, res) => {
+<<<<<<< HEAD
     
+=======
+    var user = req.session.user
+    res.json({user});
+>>>>>>> 2f6751af8238446528a9b5379a662360d8f01016
 }
 );
 //importing Models
