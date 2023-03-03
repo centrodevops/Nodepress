@@ -1,0 +1,16 @@
+<% include ('./../../partials/navbar.ejs'); %>
+<% include ('./../../partials/header.ejs'); %>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1><%=category.title%></h1>
+            <% article.forEach(articles=>{ %>
+                <hr>    
+                <h2><%= articles.title%></h2>
+                <p><%- articles.body%></p>
+            <% }); %>
+        </div>
+    </div>
+</body>
+
+<% include ('./../../partials/footer.ejs'); %>
